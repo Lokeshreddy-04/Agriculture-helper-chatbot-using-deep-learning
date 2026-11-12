@@ -1,43 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#174d35">
-<title>Agriculture Helper Chatbot Using Deep Learning</title>
-<link rel="stylesheet" href="assets/css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Agriculture Helper Chatbot — practical crop, soil and plant-care guidance for farmers.">
+  <meta name="theme-color" content="#102b22">
+  <title>AgriSathi | Agriculture Helper Chatbot</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-<header><div class="brand"><div class="logo">🌱</div> Agriculture Helper Chatbot</div><nav><a href="#tools">Smart tools</a><a href="#assistant">AI assistant</a><a href="#about">About</a></nav></header>
-<main class="wrap">
-<section class="hero">
- <div><span class="eyebrow">🌾 Your digital farming companion</span><h1>Grow smarter.<br><span style="color:#438552">Harvest better.</span></h1><p>Practical farming guidance in one place. Explore crop suggestions, learn about common plant problems, and get quick answers to everyday agriculture questions.</p><a href="#tools"><button class="btn">Explore farming tools →</button></a></div>
- <div class="hero-art"><div class="sun"></div><div class="field"></div><div class="plant">🌿</div></div>
-</section>
-<div class="stats"><div class="stat"><strong>Crop tips</strong><span>Practical growing guidance</span></div><div class="stat"><strong>Quick help</strong><span>Ask common farm questions</span></div><div class="stat"><strong>Image demo</strong><span>Explore disease-check workflow</span></div></div>
-<section class="section" id="tools"><div class="section-head"><div><h2>Smart farming tools</h2><p>Simple helpers to support everyday farm decisions.</p></div></div>
-<div class="grid">
- <article class="card"><h3>🌱 Crop recommendation</h3><p class="sub">Choose soil type and season to see example crop suggestions.</p>
- <label for="soil">Soil type</label><select id="soil"><option value="black">Black soil</option><option value="red">Red soil</option><option value="alluvial">Alluvial soil</option><option value="sandy">Sandy soil</option></select>
- <label for="season">Growing season</label><select id="season"><option value="kharif">Kharif (monsoon)</option><option value="rabi">Rabi (winter)</option><option value="summer">Summer</option></select>
- <label for="water">Water availability</label><select id="water"><option value="good">Good</option><option value="limited">Limited</option></select>
- <button class="btn" onclick="recommend()">Get crop ideas</button><div class="result" id="cropResult" aria-live="polite"></div>
- </article>
- <article class="card"><h3>📷 Plant health image demo</h3><p class="sub">Upload a leaf photo to preview the image-check experience.</p>
- <div class="upload"><div style="font-size:30px">🪴</div><strong>Choose a crop or leaf image</strong><input type="file" id="leafImage" accept="image/*" onchange="previewImage(event)"><img id="preview" class="preview" alt="Selected leaf preview"></div>
- <button class="btn" onclick="diagnose()">Run demo check</button><div class="result" id="diseaseResult" aria-live="polite"></div>
- <p class="notice">Demo only: this page does not run a trained computer-vision model. The result is an illustrative workflow, not a diagnosis.</p>
- </article>
-</div></section>
-<section class="section" id="assistant"><div class="section-head"><div><h2>Ask the agriculture assistant</h2><p>Try questions about soil, watering, pests, sowing and fertilizers.</p></div></div>
-<div class="card"><div class="chatbox" id="chat"><div class="msg bot">Namaste! 👋 I’m your Agriculture Helper. Ask me a farming question to get started.</div></div><div class="chatrow"><input id="question" placeholder="E.g. How can I improve soil health?" onkeydown="if(event.key==='Enter')sendMessage()"><button class="btn" onclick="sendMessage()">Send</button></div><p class="notice">This demo uses a small set of prepared responses. Connect a verified agriculture knowledge base or AI service before using it for real farm decisions.</p></div>
-</section>
-<section class="section" id="about"><div class="section-head"><div><h2>Built to support better farming</h2><p>A demonstration of an accessible digital agriculture helper.</p></div></div><div class="features">
- <div class="feature"><div class="ico">🌦️</div><h3>Climate-aware planning</h3><p>Consider local rainfall, temperature and season before choosing crops.</p></div>
- <div class="feature"><div class="ico">🧪</div><h3>Soil management</h3><p>Use soil-test results to guide nutrient and soil-improvement decisions.</p></div>
- <div class="feature"><div class="ico">🐛</div><h3>Early crop protection</h3><p>Learn to monitor symptoms and seek expert confirmation for suspected pests or disease.</p></div>
- </div></section>
-</main>
-<footer>© 2026 Agriculture Helper Chatbot Using Deep Learning<br>For educational demonstration only. Verify recommendations with local agricultural experts.</footer>
-<script src="assets/js/script.js" defer></script>
-</body></html>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#home" aria-label="AgriSathi home">
+        <span class="brand-mark">✳</span>
+        <span><strong>AgriSathi</strong><small>FARMING, MADE CLEAR</small></span>
+      </a>
+      <div class="side-label">WORKSPACE</div>
+      <nav class="side-nav" aria-label="Main navigation">
+        <a class="nav-link active" href="#home"><span>⌂</span> Overview</a>
+        <a class="nav-link" href="#assistant"><span>✧</span> Ask AgriSathi</a>
+        <a class="nav-link" href="#recommend"><span>♧</span> Crop recommendation</a>
+        <a class="nav-link" href="#disease"><span>⌁</span> Plant health</a>
+        <a class="nav-link" href="#guides"><span>▤</span> Farming guides</a>
+      </nav>
+      <div class="sidebar-note">
+        <span class="note-icon">☀</span>
+        <strong>Grow with confidence</strong>
+        <p>Use local soil tests and advice from your agriculture officer before making major crop decisions.</p>
+      </div>
+      <div class="sidebar-footer"><span class="status-dot"></span> Demo experience <span class="version">v1.0</span></div>
+    </aside>
+
+    <main class="main-content" id="home">
+      <header class="topbar">
+        <button class="menu-btn" id="menuBtn" aria-label="Open navigation">☰</button>
+        <div class="breadcrumb">Workspace <span>/</span> <b>Overview</b></div>
+        <div class="topbar-right"><span class="today-label">AGRICULTURE ASSISTANT</span><div class="avatar">AS</div></div>
+      </header>
+
+      <section class="welcome-section">
+        <div class="welcome-copy">
+          <div class="eyebrow"><span class="eyebrow-dot"></span> YOUR DIGITAL FARMING COMPANION</div>
+          <h1>Good decisions grow<br><em>better harvests.</em></h1>
+          <p>Get simple, practical guidance for crop planning, plant health and everyday farming questions.</p>
+          <a class="primary-btn" href="#assistant">Ask your farming question <span>↗</span></a>
+        </div>
+        <div class="hero-art" aria-label="Illustration of a growing plant">
+          <div class="sun-orb"></div><div class="hero-ring ring-one"></div><div class="hero-ring ring-two"></div>
+          <div class="plant-pot"><div class="soil"></div><div class="stem"></div><div class="leaf leaf-left"></div><div class="leaf leaf-right"></div><div class="leaf leaf-top"></div></div>
+          <div class="floating-tag tag-top">✦ Smart farming</div><div class="floating-tag tag-bottom">🌱 Grow sustainably</div>
+        </div>
+      </section>
+
+      <section class="quick-stats" aria-label="Available tools">
+        <a class="stat-card" href="#assistant"><span class="stat-icon green">✧</span><span><b>Ask a question</b><small>Get agriculture guidance</small></span><span class="card-arrow">↗</span></a>
+        <a class="stat-card" href="#recommend"><span class="stat-icon gold">♧</span><span><b>Find a suitable crop</b><small>Explore crop suggestions</small></span><span class="card-arrow">↗</span></a>
+        <a class="stat-card" href="#disease"><span class="stat-icon blue">⌁</span><span><b>Check a leaf image</b><small>Preview a plant photo</small></span><span class="card-arrow">↗</span></a>
+      </section>
+
+      <section class="content-grid">
+        <div class="main-column">
+          <section class="panel assistant-panel" id="assistant">
+            <div class="section-heading">
+              <div><div class="eyebrow">AGRICULTURE Q&A</div><h2>Ask AgriSathi</h2><p>Choose a question or type your own.</p></div>
+              <span class="live-pill"><span></span> Available</span>
+            </div>
+            <div class="chat-window" id="chatWindow" aria-live="polite">
+              <div class="chat-message bot-message"><div class="chat-avatar">✳</div><div class="message-body"><span class="message-name">AgriSathi <small>JUST NOW</small></span><p>Namaste! I can share general guidance about crops, soil, irrigation and plant care. What would you like to know?</p></div></div>
+            </div>
+            <div class="suggested-questions">
+              <button class="suggestion" data-question="How can I improve soil health?">Improve soil health</button>
+              <button class="suggestion" data-question="What is drip irrigation?">Drip irrigation</button>
+              <button class="suggestion" data-question="How do I manage yellow leaves?">Yellow leaves</button>
+            </div>
+            <form class="chat-input-row" id="chatForm">
+              <label class="sr-only" for="chatInput">Type your farming question</label>
+              <input id="chatInput" type="text" placeholder="Ask a farming question..." autocomplete="off" required>
+              <button class="send-btn" type="submit" aria-label="Send message">↑</button>
+            </form>
+            <p class="fine-print">Demo responses are rule-based examples, not advice from a live AI model.</p>
+          </section>
+
+          <section class="panel recommendation-panel" id="recommend">
+            <div class="section-heading">
+              <div><div class="eyebrow">PLAN YOUR NEXT CROP</div><h2>Crop recommendation</h2><p>Enter basic field conditions to explore illustrative options.</p></div>
+              <span class="section-number">01 / 02</span>
+            </div>
+            <form id="cropForm" class="crop-form">
+              <div class="form-grid">
+                <label>Soil type<select id="soilType" required><option value="">Select soil type</option><option value="loamy">Loamy</option><option value="clay">Clay</option><option value="sandy">Sandy</option><option value="black">Black soil</option><option value="red">Red soil</option></select></label>
+                <label>Growing season<select id="season" required><option value="">Select season</option><option value="kharif">Kharif (monsoon)</option><option value="rabi">Rabi (winter)</option><option value="summer">Summer</option></select></label>
+                <label>Water availability<select id="water" required><option value="">Select availability</option><option value="high">Good / assured</option><option value="medium">Moderate</option><option value="low">Limited</option></select></label>
+                <label>Field size (acres)<input id="fieldSize" type="number" min="0.1" max="10000" step="0.1" placeholder="e.g. 2.5" required></label>
+              </div>
+              <button class="primary-btn form-submit" type="submit">Suggest suitable crops <span>→</span></button>
+            </form>
+            <div class="recommendation-result" id="cropResult" hidden></div>
+            <p class="fine-print">Suggestions are educational examples. Actual suitability depends on local climate, soil test, variety, market and current advisories.</p>
+          </section>
+        </div>
+
+        <div class="side-column">
+          <section class="panel plant-panel" id="disease">
+            <div class="section-heading compact-heading"><div><div class="eyebrow">PLANT HEALTH</div><h2>Leaf image preview</h2></div><span class="section-number">02 / 02</span></div>
+            <div class="upload-area" id="uploadArea">
+              <input type="file" id="leafInput" accept="image/*" hidden>
+              <div class="upload-placeholder" id="uploadPlaceholder"><div class="upload-icon">＋</div><strong>Upload a leaf photo</strong><p>Choose a clear JPG, PNG or WEBP image</p><button type="button" class="outline-btn" id="chooseImage">Choose image</button></div>
+              <img id="leafPreview" alt="Selected leaf image preview" hidden>
+            </div>
+            <div class="image-actions"><span id="fileName">No image selected</span><button type="button" id="removeImage" class="text-btn" hidden>Remove</button></div>
+            <div class="notice"><span>ⓘ</span><p>This version previews the image only. It does not diagnose plant disease or run a trained CNN model.</p></div>
+          </section>
+
+          <section class="panel guides-panel" id="guides">
+            <div class="section-heading compact-heading"><div><div class="eyebrow">FIELD NOTES</div><h2>Farming essentials</h2></div></div>
+            <a class="guide-item" href="https://soilhealth.dac.gov.in/" target="_blank" rel="noopener"><span class="guide-icon">◉</span><span><b>Soil health card</b><small>Understand soil testing</small></span><span>↗</span></a>
+            <a class="guide-item" href="https://pmkisan.gov.in/" target="_blank" rel="noopener"><span class="guide-icon">⌂</span><span><b>PM-KISAN</b><small>Official farmer scheme portal</small></span><span>↗</span></a>
+            <a class="guide-item" href="https://agmarknet.gov.in/" target="_blank" rel="noopener"><span class="guide-icon">▥</span><span><b>Agmarknet</b><small>Market price information</small></span><span>↗</span></a>
+          </section>
+          <div class="quote-card"><span>“</span><p>The ultimate goal of farming is not the growing of crops, but the cultivation and perfection of human beings.</p><small>— MASANOBU FUKUOKA</small></div>
+        </div>
+      </section>
+
+      <footer class="footer"><span>© 2026 AgriSathi · Agriculture Helper Chatbot Using Deep Learning</span><span>Built as an educational project <b>✳</b></span></footer>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="assets/js/script.js"></script>
+</body>
+</html>
