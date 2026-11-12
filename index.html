@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#174d35">
+<title>Agriculture Helper Chatbot Using Deep Learning</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<header><div class="brand"><div class="logo">🌱</div> Agriculture Helper Chatbot</div><nav><a href="#tools">Smart tools</a><a href="#assistant">AI assistant</a><a href="#about">About</a></nav></header>
+<main class="wrap">
+<section class="hero">
+ <div><span class="eyebrow">🌾 Your digital farming companion</span><h1>Grow smarter.<br><span style="color:#438552">Harvest better.</span></h1><p>Practical farming guidance in one place. Explore crop suggestions, learn about common plant problems, and get quick answers to everyday agriculture questions.</p><a href="#tools"><button class="btn">Explore farming tools →</button></a></div>
+ <div class="hero-art"><div class="sun"></div><div class="field"></div><div class="plant">🌿</div></div>
+</section>
+<div class="stats"><div class="stat"><strong>Crop tips</strong><span>Practical growing guidance</span></div><div class="stat"><strong>Quick help</strong><span>Ask common farm questions</span></div><div class="stat"><strong>Image demo</strong><span>Explore disease-check workflow</span></div></div>
+<section class="section" id="tools"><div class="section-head"><div><h2>Smart farming tools</h2><p>Simple helpers to support everyday farm decisions.</p></div></div>
+<div class="grid">
+ <article class="card"><h3>🌱 Crop recommendation</h3><p class="sub">Choose soil type and season to see example crop suggestions.</p>
+ <label for="soil">Soil type</label><select id="soil"><option value="black">Black soil</option><option value="red">Red soil</option><option value="alluvial">Alluvial soil</option><option value="sandy">Sandy soil</option></select>
+ <label for="season">Growing season</label><select id="season"><option value="kharif">Kharif (monsoon)</option><option value="rabi">Rabi (winter)</option><option value="summer">Summer</option></select>
+ <label for="water">Water availability</label><select id="water"><option value="good">Good</option><option value="limited">Limited</option></select>
+ <button class="btn" onclick="recommend()">Get crop ideas</button><div class="result" id="cropResult" aria-live="polite"></div>
+ </article>
+ <article class="card"><h3>📷 Plant health image demo</h3><p class="sub">Upload a leaf photo to preview the image-check experience.</p>
+ <div class="upload"><div style="font-size:30px">🪴</div><strong>Choose a crop or leaf image</strong><input type="file" id="leafImage" accept="image/*" onchange="previewImage(event)"><img id="preview" class="preview" alt="Selected leaf preview"></div>
+ <button class="btn" onclick="diagnose()">Run demo check</button><div class="result" id="diseaseResult" aria-live="polite"></div>
+ <p class="notice">Demo only: this page does not run a trained computer-vision model. The result is an illustrative workflow, not a diagnosis.</p>
+ </article>
+</div></section>
+<section class="section" id="assistant"><div class="section-head"><div><h2>Ask the agriculture assistant</h2><p>Try questions about soil, watering, pests, sowing and fertilizers.</p></div></div>
+<div class="card"><div class="chatbox" id="chat"><div class="msg bot">Namaste! 👋 I’m your Agriculture Helper. Ask me a farming question to get started.</div></div><div class="chatrow"><input id="question" placeholder="E.g. How can I improve soil health?" onkeydown="if(event.key==='Enter')sendMessage()"><button class="btn" onclick="sendMessage()">Send</button></div><p class="notice">This demo uses a small set of prepared responses. Connect a verified agriculture knowledge base or AI service before using it for real farm decisions.</p></div>
+</section>
+<section class="section" id="about"><div class="section-head"><div><h2>Built to support better farming</h2><p>A demonstration of an accessible digital agriculture helper.</p></div></div><div class="features">
+ <div class="feature"><div class="ico">🌦️</div><h3>Climate-aware planning</h3><p>Consider local rainfall, temperature and season before choosing crops.</p></div>
+ <div class="feature"><div class="ico">🧪</div><h3>Soil management</h3><p>Use soil-test results to guide nutrient and soil-improvement decisions.</p></div>
+ <div class="feature"><div class="ico">🐛</div><h3>Early crop protection</h3><p>Learn to monitor symptoms and seek expert confirmation for suspected pests or disease.</p></div>
+ </div></section>
+</main>
+<footer>© 2026 Agriculture Helper Chatbot Using Deep Learning<br>For educational demonstration only. Verify recommendations with local agricultural experts.</footer>
+<script src="assets/js/script.js" defer></script>
+</body></html>
