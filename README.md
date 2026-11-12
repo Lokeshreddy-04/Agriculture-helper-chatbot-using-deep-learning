@@ -1,6 +1,6 @@
 # Agriculture Helper Chatbot Using Deep Learning
 
-**AgriSathi** is a responsive agriculture-assistance website concept designed to make common farming information easier to explore. This repository currently contains a front-end demonstration built with HTML, CSS and vanilla JavaScript.
+**Agrobot** is a responsive agriculture-assistance website concept designed to make common farming information easier to explore. This repository currently contains a front-end demonstration built with HTML, CSS and vanilla JavaScript.
 
 ## Features in this version
 

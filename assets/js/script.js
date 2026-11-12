@@ -27,7 +27,7 @@ function addMessage(text, sender) {
   body.className = "message-body";
   const name = document.createElement("span");
   name.className = "message-name";
-  name.textContent = sender === "user" ? "YOU" : "AGRISATHI";
+  name.textContent = sender === "user" ? "YOU" : "AGROBOT";
   const p = document.createElement("p");
   p.textContent = text;
   body.append(name, p);
